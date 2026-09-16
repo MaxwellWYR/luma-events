@@ -94,13 +94,13 @@ public final class FreezeTag extends InventoryUnifiedMinigame {
         for (FreezeTagTeam team : teams) {
             for (EventPlayer member : team.getMembers()) {
                 member.operatePlayer(player -> {
-                    player.teleportAsync(team.getSpawnLocation().toCenterLocation());
                     GlowColorManager.getInstance().setTransientColor(player, team.getColor());
                     player.getInventory().setChestplate(coloredLeather(Material.LEATHER_CHESTPLATE, team.getArmorColor()));
                     //player.getInventory().setLeggings(coloredLeather(Material.LEATHER_LEGGINGS, team.getArmorColor()));
                     //player.getInventory().setBoots(coloredLeather(Material.LEATHER_BOOTS, team.getArmorColor()));
                     player.setFoodLevel(20);
                     player.setSaturation(20f);
+                    player.teleportAsync(team.getSpawnLocation().toCenterLocation());
                 });
             }
         }
@@ -614,9 +614,9 @@ public final class FreezeTag extends InventoryUnifiedMinigame {
         for (FreezeTagTeam team : teams) {
             for (EventPlayer member : team.getMembers()) {
                 member.operatePlayer(player -> {
-                    player.teleportAsync(team.getSpawnLocation().toCenterLocation());
                     player.setFoodLevel(20);
                     player.setSaturation(20f);
+                    player.teleportAsync(team.getSpawnLocation().toCenterLocation());
                 });
             }
         }

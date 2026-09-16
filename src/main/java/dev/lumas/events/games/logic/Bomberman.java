@@ -799,9 +799,9 @@ public final class Bomberman extends InventoryUnifiedMinigame {
         public void death(PlayerDeathEvent event) {
             survive(event);
             operatePlayer(player -> {
-                player.teleportAsync(this.deathLocation);
                 player.setAllowFlight(true);
                 player.setFlying(true);
+                player.teleportAsync(this.deathLocation);
             });
         }
 

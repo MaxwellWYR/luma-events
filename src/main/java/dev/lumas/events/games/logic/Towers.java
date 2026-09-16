@@ -815,9 +815,9 @@ public final class Towers extends InventoryUnifiedMinigame {
             this.released = true;
             this.showPlayer();
             this.eventPlayer.operatePlayer(player -> {
-                player.teleportAsync(this.context.spawnLocation);
                 player.setAllowFlight(false);
                 player.removePotionEffect(PotionEffectType.INVISIBILITY);
+                player.teleportAsync(this.context.spawnLocation);
             });
         }
     }
