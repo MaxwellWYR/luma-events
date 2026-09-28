@@ -10,6 +10,7 @@ import dev.lumas.events.games.models.CountdownBossBar;
 import dev.lumas.events.model.EventPlayer;
 import dev.lumas.events.model.MinigameBoundingBox;
 import dev.lumas.events.utility.Executors;
+import dev.lumas.events.utility.Externals;
 import dev.lumas.events.utility.JoinTrace;
 import dev.lumas.events.utility.Util;
 import dev.lumas.events.utility.scheduler.AsynchronousRunnable;
@@ -57,15 +58,7 @@ public abstract class Minigame extends AsynchronousRunnable implements Listener 
         HIDDEN_ARMOR_AVAILABLE = available;
     }
 
-    private static final boolean BREWERY_X_AVAILABLE;
-    static {
-        boolean available = false;
-        try {
-            Class.forName("com.dre.brewery.api.BreweryApi");
-            available = true;
-        } catch (ClassNotFoundException ignored) {}
-        BREWERY_X_AVAILABLE = available;
-    }
+private static final boolean BREWERY_X_AVAILABLE = Externals.pluginExists("BreweryX");
 
     protected static final Random RANDOM = Util.RANDOM;
 
