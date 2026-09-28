@@ -18,6 +18,7 @@ import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import lombok.Getter;
 import lombok.Setter;
 import me.kteq.hiddenarmor.HiddenArmorAPI;
+import com.dre.brewery.BPlayer;
 import com.dre.brewery.api.BreweryApi;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.bossbar.BossBar;
@@ -158,7 +159,12 @@ private static final boolean BREWERY_X_AVAILABLE = Externals.pluginExists("Brewe
 
         if (BREWERY_X_AVAILABLE) {
             for (EventPlayer participant : this.participants) {
-                participant.operatePlayer(player -> BreweryApi.setPlayerDrunk(player, 0, 0));
+                participant.operatePlayer(player -> {
+                    BPlayer bPlayer = BreweryApi.getBPlayer(player);
+                    if (bPlayer != null && bPlayer.getDrunkeness() > 0) {
+                        BreweryApi.setPlayerDrunk(player, 0, 0);
+                    }
+                });
             }
         }
 
